@@ -1,0 +1,203 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   ROOT (design system)
+========================= */
+:root {
+  --bg-dark: #05010a;
+  --bg-card: rgba(20, 10, 40, 0.6);
+  --neon-blue: #00f0ff;
+  --neon-pink: #ff00c8;
+  --neon-purple: #7c3aed;
+  --text: #e0e7ff;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  font-family: 'Orbitron', system-ui, sans-serif;
+  background: radial-gradient(circle at top, #0a0015, #020004 70%);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* =========================
+   NAVBAR (glass + neon)
+========================= */
+.header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(10, 0, 30, 0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 1000;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.4rem;
+  color: var(--neon-blue);
+  text-decoration: none;
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  color: #a5b4fc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: var(--neon-pink);
+  text-shadow: 0 0 8px var(--neon-pink);
+}
+
+/* =========================
+   HERO (CYBER BANNER)
+========================= */
+.hero {
+  position: relative;
+  padding: 140px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* animated background glow */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--neon-purple), transparent);
+  top: -200px;
+  left: -200px;
+  filter: blur(120px);
+  opacity: 0.4;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--neon-blue), transparent);
+  bottom: -200px;
+  right: -200px;
+  filter: blur(120px);
+  opacity: 0.4;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: white;
+  text-shadow:
+    0 0 10px var(--neon-blue),
+    0 0 20px var(--neon-blue),
+    0 0 40px var(--neon-purple);
+}
+
+.hero p {
+  margin-top: 20px;
+  color: #c7d2fe;
+}
+
+/* =========================
+   BUTTONS (neon glow)
+========================= */
+.btn-primary {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow:
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-blue);
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 20px var(--neon-pink),
+    0 0 40px var(--neon-blue);
+}
+
+.btn-secondary {
+  margin-left: 10px;
+  padding: 14px 28px;
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* =========================
+   FEATURES (glass cards)
+========================= */
+.features {
+  padding: 100px 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 25px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 0 15px var(--neon-purple),
+    0 0 30px rgba(124,58,237,0.4);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  margin-top: 80px;
+  padding: 30px;
+  text-align: center;
+  color: #6b7280;
+  } 
