@@ -8,7 +8,7 @@
 }
 
 /* =========================
-   ROOT (design system)
+   ROOT
 ========================= */
 :root {
   --bg-dark: #05010a;
@@ -20,13 +20,23 @@
 }
 
 /* =========================
-   BODY
+   LAYOUT FIX (FOOTER)
 ========================= */
+html, body {
+  height: 100%;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
   font-family: 'Orbitron', system-ui, sans-serif;
   background: radial-gradient(circle at top, #0a0015, #020004 70%);
   color: var(--text);
   overflow-x: hidden;
+}
+
+main {
+  flex: 1;
 }
 
 /* =========================
@@ -39,7 +49,7 @@ body {
 }
 
 /* =========================
-   NAVBAR (glass + neon)
+   NAVBAR
 ========================= */
 .header {
   position: sticky;
@@ -81,7 +91,7 @@ body {
 }
 
 /* =========================
-   HERO (CYBER BANNER)
+   HERO
 ========================= */
 .hero {
   position: relative;
@@ -90,7 +100,6 @@ body {
   overflow: hidden;
 }
 
-/* animated background glow */
 .hero::before {
   content: "";
   position: absolute;
@@ -130,7 +139,7 @@ body {
 }
 
 /* =========================
-   BUTTONS (neon glow)
+   BUTTONS
 ========================= */
 .btn-primary {
   display: inline-block;
@@ -163,7 +172,7 @@ body {
 }
 
 /* =========================
-   FEATURES (glass cards)
+   FEATURES
 ========================= */
 .features {
   padding: 100px 20px;
@@ -193,11 +202,12 @@ body {
 }
 
 /* =========================
-   FOOTER
+   FOOTER (FIXED)
 ========================= */
 .footer {
-  margin-top: 80px;
+  margin-top: auto;
   padding: 30px;
   text-align: center;
   color: #6b7280;
-  } 
+  border-top: 1px solid rgba(255,255,255,0.05);
+   }
