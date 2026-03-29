@@ -20,7 +20,7 @@
 }
 
 /* =========================
-   LAYOUT FIX (FOOTER)
+   GLOBAL
 ========================= */
 html, body {
   height: 100%;
@@ -35,8 +35,23 @@ body {
   overflow-x: hidden;
 }
 
+/* subtle grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
 main {
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================
@@ -67,12 +82,13 @@ main {
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--neon-blue);
   text-decoration: none;
   text-shadow: 0 0 10px var(--neon-blue);
 }
 
+/* nav */
 .nav ul {
   list-style: none;
   display: flex;
@@ -80,14 +96,29 @@ main {
 }
 
 .nav a {
+  position: relative;
   color: #a5b4fc;
   text-decoration: none;
   transition: 0.3s;
 }
 
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: var(--neon-blue);
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
 .nav a:hover {
   color: var(--neon-pink);
-  text-shadow: 0 0 8px var(--neon-pink);
 }
 
 /* =========================
@@ -95,38 +126,54 @@ main {
 ========================= */
 .hero {
   position: relative;
-  padding: 140px 20px;
+  padding: 120px 20px;
   text-align: center;
   overflow: hidden;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--neon-purple), transparent);
-  top: -200px;
-  left: -200px;
-  filter: blur(120px);
-  opacity: 0.4;
-}
-
+/* glow fix (NO OVERFLOW) */
+.hero::before,
 .hero::after {
   content: "";
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--neon-blue), transparent);
-  bottom: -200px;
-  right: -200px;
-  filter: blur(120px);
-  opacity: 0.4;
+  width: 400px;
+  height: 400px;
+  filter: blur(100px);
+  opacity: 0.3;
+  z-index: 0;
 }
 
+.hero::before {
+  background: radial-gradient(circle, var(--neon-purple), transparent);
+  top: -150px;
+  left: -150px;
+}
+
+.hero::after {
+  background: radial-gradient(circle, var(--neon-blue), transparent);
+  bottom: -150px;
+  right: -150px;
+}
+
+/* animated gradient */
+.hero {
+  background: linear-gradient(270deg, #0a0015, #0d0030, #001f2f);
+  background-size: 600% 600%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
+}
+
+/* text */
 .hero h1 {
   font-size: 3rem;
   color: white;
+  position: relative;
+  z-index: 1;
   text-shadow:
     0 0 10px var(--neon-blue),
     0 0 20px var(--neon-blue),
@@ -136,6 +183,8 @@ main {
 .hero p {
   margin-top: 20px;
   color: #c7d2fe;
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================
@@ -157,9 +206,6 @@ main {
 
 .btn-primary:hover {
   transform: scale(1.05);
-  box-shadow:
-    0 0 20px var(--neon-pink),
-    0 0 40px var(--neon-blue);
 }
 
 .btn-secondary {
@@ -178,6 +224,12 @@ main {
   padding: 100px 20px;
 }
 
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -185,6 +237,7 @@ main {
   margin-top: 40px;
 }
 
+/* cards */
 .card {
   background: var(--bg-card);
   border-radius: 12px;
@@ -192,6 +245,23 @@ main {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.1);
   transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow border animation */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(120deg, transparent, var(--neon-purple), transparent);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover::before {
+  opacity: 0.2;
 }
 
 .card:hover {
@@ -202,7 +272,7 @@ main {
 }
 
 /* =========================
-   FOOTER (FIXED)
+   FOOTER
 ========================= */
 .footer {
   margin-top: auto;
@@ -210,4 +280,15 @@ main {
   text-align: center;
   color: #6b7280;
   border-top: 1px solid rgba(255,255,255,0.05);
-   }
+}
+
+.footer a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  color: var(--neon-pink);
+  text-shadow: 0 0 8px var(--neon-pink);
+     }
