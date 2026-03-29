@@ -22,11 +22,12 @@
 }
 
 /* =========================
-   GLOBAL
+   GLOBAL FIX
 ========================= */
 html, body {
   height: 100%;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: hidden; /* 🔥 EZ KULCS */
   scroll-behavior: smooth;
 }
 
@@ -38,7 +39,7 @@ body {
   color: var(--text);
 }
 
-/* GRID háttér */
+/* GRID háttér animáció */
 body::before {
   content: "";
   position: fixed;
@@ -49,6 +50,7 @@ body::before {
   background-size: 40px 40px;
   animation: gridMove 20s linear infinite;
   z-index: 0;
+  pointer-events: none;
 }
 
 @keyframes gridMove {
@@ -63,113 +65,122 @@ main {
 }
 
 /* =========================
-   CONTAINER
+   CONTAINER FIX
 ========================= */
 .container {
   width: 100%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 20px;
 }
 
 /* =========================
-   NAVBAR + HAMBURGER
+   NAVBAR FIX
 ========================= */
 .header {
   position: sticky;
   top: 0;
-  background: rgba(5,0,20,0.8);
   backdrop-filter: blur(10px);
+  background: rgba(5, 0, 20, 0.8);
   z-index: 1000;
+  width: 100%;
 }
 
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* 🔥 mobil fix */
 }
 
 .logo {
   color: var(--neon-blue);
-  font-size: 1.5rem;
   text-shadow: 0 0 10px var(--neon-blue);
+  font-size: 1.5rem;
 }
 
 /* NAV */
-.nav {
-  display: flex;
-}
-
 .nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
+  flex-wrap: wrap; /* 🔥 mobil fix */
 }
 
 .nav a {
   color: #9ca3af;
   text-decoration: none;
+  position: relative;
+  transition: 0.3s;
 }
 
 .nav a:hover {
   color: var(--neon-pink);
 }
 
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: var(--neon-blue);
-  margin: 4px 0;
-  transition: 0.3s;
-}
-
 /* =========================
-   HERO
+   HERO FIX (NO OVERFLOW)
 ========================= */
 .hero {
   position: relative;
   padding: 120px 20px;
   text-align: center;
-  overflow: hidden;
+  overflow: hidden; /* 🔥 fontos */
+  width: 100%;
 }
 
+/* glow (KISEBB MÉRET) */
 .hero::before,
 .hero::after {
   content: "";
   position: absolute;
-  width: 300px;
+  width: 300px; /* 🔥 kisebb */
   height: 300px;
   filter: blur(100px);
+  opacity: 0.4;
+  z-index: 0;
 }
 
 .hero::before {
-  background: var(--neon-purple);
+  background: radial-gradient(circle, var(--neon-purple), transparent);
   top: -100px;
   left: -100px;
+  animation: pulseGlow 6s infinite alternate;
 }
 
 .hero::after {
-  background: var(--neon-blue);
+  background: radial-gradient(circle, var(--neon-blue), transparent);
   bottom: -100px;
   right: -100px;
+  animation: pulseGlow 8s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { opacity: 0.2; transform: scale(1); }
+  to { opacity: 0.5; transform: scale(1.2); }
 }
 
 /* TEXT */
 .hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem); /* 🔥 responsive */
+  position: relative;
+  z-index: 1;
   animation: glowText 2s infinite alternate;
 }
 
 @keyframes glowText {
   from { text-shadow: 0 0 10px var(--neon-blue); }
-  to { text-shadow: 0 0 30px var(--neon-purple); }
+  to {
+    text-shadow:
+      0 0 20px var(--neon-blue),
+      0 0 40px var(--neon-purple);
+  }
+}
+
+.hero p {
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* =========================
@@ -183,28 +194,22 @@ main {
   border-radius: 8px;
   color: white;
   text-decoration: none;
+  animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+  0% { box-shadow: 0 0 10px var(--neon-pink); }
+  50% { box-shadow: 0 0 25px var(--neon-blue); }
+  100% { box-shadow: 0 0 10px var(--neon-pink); }
 }
 
 .btn-secondary {
   margin-left: 10px;
   padding: 14px 28px;
   border: 1px solid var(--neon-blue);
-  color: var(--neon-blue);
   border-radius: 8px;
-}
-
-/* =========================
-   SCROLL ANIMATION
-========================= */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.6s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
+  color: var(--neon-blue);
+  text-decoration: none;
 }
 
 /* =========================
@@ -224,82 +229,51 @@ main {
   background: var(--bg-card);
   padding: 25px;
   border-radius: 12px;
-  transition: 0.3s;
+  transition: 0.4s;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 0 0 25px var(--neon-purple);
 }
 
 /* =========================
-   PRICING PRO GLOW
-========================= */
-.pricing .card {
-  position: relative;
-  overflow: hidden;
-}
-
-.pricing .card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent, var(--neon-purple), transparent);
-  opacity: 0;
-  transition: 0.4s;
-}
-
-.pricing .card:hover::before {
-  opacity: 0.4;
-}
-
-.pricing .card:hover {
-  box-shadow:
-    0 0 20px var(--neon-purple),
-    0 0 40px var(--neon-blue);
-}
-
-/* =========================
-   FOOTER
+   FOOTER FIX
 ========================= */
 .footer {
   margin-top: auto;
   padding: 30px;
   text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .footer a {
   color: var(--neon-blue);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--neon-pink);
 }
 
 /* =========================
-   MOBILE MENU
+   MOBILE EXTRA FIX
 ========================= */
 @media (max-width: 768px) {
-
-  .hamburger {
-    display: flex;
-  }
-
-  .nav {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: #020004;
-    flex-direction: column;
-    transform: translateY(-200%);
-    transition: 0.3s;
-  }
-
-  .nav.active {
-    transform: translateY(0);
-  }
-
   .nav ul {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
+    justify-content: center;
   }
 
   .hero {
@@ -308,6 +282,6 @@ main {
 
   .btn-secondary {
     display: block;
-    margin-top: 15px;
+    margin: 15px auto 0;
   }
 }
