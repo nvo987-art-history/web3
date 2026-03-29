@@ -1,0 +1,115 @@
+name: NVO987 Full Code Validator
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install validators
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq tidy libxml2-utils
+
+      - name: Validate JSON files
+        run: |
+          echo "JSON validation"
+          find . -type f -name "*.json" ! -path "./.git/*" | while read f; do
+            echo "Checking $f"
+            jq empty "$f"
+          done
+
+      - name: Validate NDJSON files
+        run: |
+          echo "NDJSON validation"
+          find . -type f -name "*.ndjson" ! -path "./.git/*" | while read f; do
+            echo "Checking $f"
+            while IFS= read -r line; do
+              echo "$line" | jq empty
+            done < "$f"
+          done
+
+      - name: Validate XML files
+        run: |
+          echo "XML validation"
+          find . -type f -name "*.xml" ! -path "./.git/*" | while read f; do
+            echo "Checking $f"
+            xmllint --noout "$f"
+          done
+
+      - name: Validate HTML files
+        run: |
+          echo "HTML validation"
+          find . -type f -name "*.html" ! -path "./.git/*" | while read f; do
+            echo "Checking $f"
+            tidy -errors -q "$f" || true
+          done
+
+      - name: Check empty files
+        run: |
+          echo "Empty file check"
+          find . -type f ! -path "./.git/*" | while read f; do
+            if [ ! -s "$f" ]; then
+              echo "Empty file detected: $f"
+              exit 1
+            fi
+          done
+
+      - name: Check required assets
+        run: |
+          echo "Required file check"
+          test -f avatar.png || test -f avatar.jpg
+          test -f og-image.jpg
+          test -f .well-known/knowledge.json
+
+      - name: Structural cross-check (knowledge integrity)
+        run: |
+          set -e
+          echo "Knowledge structural validation"
+
+          corpus_file=$(find . -type f -name "corpus.ndjson" ! -path "./.git/*" | head -n 1)
+          vectors_file=$(find . -type f -name "vectors.ndjson" ! -path "./.git/*" | head -n 1)
+
+          if [ -z "$corpus_file" ] || [ -z "$vectors_file" ]; then
+            echo "corpus.ndjson or vectors.ndjson not found"
+            exit 1
+          fi
+
+          echo "Using corpus file: $corpus_file"
+          echo "Using vectors file: $vectors_file"
+
+          echo "Collect corpus IDs"
+          corpus_ids=$(cat "$corpus_file" | jq -r '.id')
+
+          echo "Check duplicate corpus IDs"
+          dup=$(echo "$corpus_ids" | sort | uniq -d)
+          if [ -n "$dup" ]; then
+            echo "Duplicate corpus ID detected: $dup"
+            exit 1
+          fi
+
+          echo "Check duplicate vector IDs"
+          dupv=$(cat "$vectors_file" | jq -r '.id' | sort | uniq -d)
+          if [ -n "$dupv" ]; then
+            echo "Duplicate vector ID detected: $dupv"
+            exit 1
+          fi
+
+          echo "Validate vector to corpus references"
+          cat "$vectors_file" | jq -r '.corpus_id' | while read cid; do
+            echo "$corpus_ids" | grep -qx "$cid" || {
+              echo "Vector references missing corpus ID: $cid"
+              exit 1
+            }
+          done
+
+          echo "Structural validation completed"
+
+      - name: Final status
+        run: echo "All files validated successfully"
