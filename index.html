@@ -3,19 +3,76 @@
 
 <head>
 
-  <!-- CORE -->
+  <!-- =========================
+       CORE
+  ========================== -->
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <title>Web3 Hosting | Hébergement décentralisé IPFS</title>
-  <meta name="description" content="Plateforme Web3 futuriste pour héberger vos sites sur IPFS.">
+  <!-- =========================
+       SEO
+  ========================== -->
+  <title>Web3 Hosting | Hébergement IPFS décentralisé</title>
+  <meta name="description" content="Plateforme Web3 professionnelle pour héberger vos sites sur IPFS avec domaine personnalisé.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://web3.nvo987.us/">
 
-  <!-- FONT (cyberpunk) -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <!-- =========================
+       OPEN GRAPH
+  ========================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Web3 Hosting">
+  <meta property="og:description" content="Déployez vos sites en Web3 sans serveur.">
+  <meta property="og:url" content="https://web3.nvo987.us/">
+  <meta property="og:image" content="https://web3.nvo987.us/assets/og-image.png">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- =========================
+       TWITTER
+  ========================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web3 Hosting">
+  <meta name="twitter:description" content="Hébergement Web3 décentralisé.">
+  <meta name="twitter:image" content="https://web3.nvo987.us/assets/og-image.png">
+
+  <!-- =========================
+       PERFORMANCE
+  ========================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+
+  <!-- =========================
+       FONTS
+  ========================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- =========================
+       PWA / MOBILE
+  ========================== -->
+  <meta name="theme-color" content="#020617">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- =========================
+       SECURITY (basic CSP)
+  ========================== -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https: data: blob:;
+                 script-src 'self' https://cdn.jsdelivr.net;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' https: data:;">
+
+  <!-- =========================
+       ICONS
+  ========================== -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- =========================
+       CSS
+  ========================== -->
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -25,76 +82,68 @@
 <header class="header">
   <div class="container nav-wrapper">
 
-    <a href="/" class="logo">⚡ Web3Hosting</a>
+    <a href="/" class="logo">Web3Hosting</a>
 
     <nav class="nav">
       <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="#features">Fonctionnalités</a></li>
         <li><a href="#pricing">Tarifs</a></li>
-        <li><a href="/dashboard.html">Dashboard</a></li>
-        <li><a href="/login.html" class="btn-nav">Connexion</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="login.html" class="btn-nav">Connexion</a></li>
       </ul>
     </nav>
 
   </div>
 </header>
 
-<!-- HERO / BANNER -->
+<!-- MAIN -->
+<main>
+
+<!-- HERO -->
 <section class="hero">
   <div class="container">
-
-    <h1>⚡ Hébergement Web3</h1>
-
-    <p>
-      Déployez vos sites sur IPFS dans un univers décentralisé.<br>
-      Rapide. Sécurisé. Sans serveur.
-    </p>
+    <h1>Hébergement Web3</h1>
+    <p>Déployez vos sites sur IPFS. Sans serveur. Sans limite.</p>
 
     <div class="cta">
-      <a href="/dashboard.html" class="btn-primary">🚀 Lancer</a>
-      <a href="#features" class="btn-secondary">Explorer</a>
+      <a href="dashboard.html" class="btn-primary">Commencer</a>
+      <a href="#features" class="btn-secondary">Découvrir</a>
     </div>
-
   </div>
 </section>
 
 <!-- FEATURES -->
 <section id="features" class="features">
   <div class="container">
-
-    <h2>⚙️ Fonctionnalités</h2>
+    <h2>Fonctionnalités</h2>
 
     <div class="grid">
-
       <div class="card">
-        <h3>⚡ Upload IPFS</h3>
-        <p>Déployez vos fichiers instantanément.</p>
+        <h3>Upload IPFS</h3>
+        <p>Déploiement instantané de vos fichiers.</p>
       </div>
 
       <div class="card">
-        <h3>🌐 Domaine custom</h3>
-        <p>Liez votre domaine à votre contenu Web3.</p>
+        <h3>Domaine personnalisé</h3>
+        <p>Associez votre domaine à votre contenu Web3.</p>
       </div>
 
       <div class="card">
-        <h3>🧠 Versioning</h3>
+        <h3>Versioning</h3>
         <p>Historique complet de vos déploiements.</p>
       </div>
-
     </div>
 
   </div>
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="features">
+<section id="pricing" class="pricing">
   <div class="container">
-
-    <h2>💰 Tarifs</h2>
+    <h2>Tarifs</h2>
 
     <div class="grid">
-
       <div class="card">
         <h3>Free</h3>
         <p>Accès de base Web3</p>
@@ -102,18 +151,25 @@
 
       <div class="card">
         <h3>Pro</h3>
-        <p>Fonctionnalités avancées + domaine</p>
+        <p>Fonctionnalités avancées</p>
       </div>
-
     </div>
 
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer class="footer">
-  <p>© 2026 Web3 Hosting</p>
+  <div class="container">
+    <p>© 2026 Web3 Hosting</p>
+    <nav>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="terms.html">Conditions</a>
+    </nav>
+  </div>
 </footer>
 
 </body>
-      </html> 
+</html>
