@@ -2,17 +2,102 @@
 <html lang="fr">
 
 <head>
-  <!-- (HEAD RÉSZ VÁLTOZATLAN) -->
-  <!-- ... -->
+
+  <!-- =========================
+       CORE
+  ========================== -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =========================
+       SEO (ADVANCED)
+  ========================== -->
+  <title>Web3 Hosting | Hébergement IPFS décentralisé</title>
+  <meta name="description" content="Plateforme Web3 professionnelle pour héberger vos sites sur IPFS avec domaine personnalisé. Déploiement rapide, sécurisé et sans serveur.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Web3 Hosting">
+  <link rel="canonical" href="https://web3.nvo987.us/">
+
+  <!-- =========================
+       OPEN GRAPH
+  ========================== -->
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Web3 Hosting">
+  <meta property="og:description" content="Déployez vos sites en Web3 sans serveur.">
+  <meta property="og:url" content="https://web3.nvo987.us/">
+  <meta property="og:site_name" content="Web3 Hosting">
+  <meta property="og:image" content="https://web3.nvo987.us/assets/og-image.png">
+
+  <!-- =========================
+       TWITTER
+  ========================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Web3 Hosting">
+  <meta name="twitter:description" content="Hébergement Web3 décentralisé.">
+  <meta name="twitter:image" content="https://web3.nvo987.us/assets/og-image.png">
+
+  <!-- =========================
+       PERFORMANCE
+  ========================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" as="style">
+
+  <!-- =========================
+       FONTS
+  ========================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- =========================
+       PWA / MOBILE
+  ========================== -->
+  <meta name="theme-color" content="#020617">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- =========================
+       SECURITY
+  ========================== -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' https://cdn.jsdelivr.net;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' data: https:;
+                 connect-src 'self' https:;
+                 frame-ancestors 'none';">
+
+  <!-- =========================
+       ICONS
+  ========================== -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- =========================
+       CSS
+  ========================== -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- =========================
+       STRUCTURED DATA
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Web3 Hosting",
+    "url": "https://web3.nvo987.us",
+    "logo": "https://web3.nvo987.us/assets/logo.png"
+  }
+  </script>
+
 </head>
 
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-glow"></div>
-  <div class="loader-text">Web3 Loading</div>
-</div>
 
 <!-- NAVBAR -->
 <header class="header">
@@ -20,24 +105,26 @@
 
     <a href="/" class="logo">Web3Hosting</a>
 
+    <!-- HAMBURGER -->
     <div class="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="#features">Fonctionnalités</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="login.html">Connexion</a></li>
+        <li><a href="login.html" class="btn-nav">Connexion</a></li>
       </ul>
     </nav>
 
   </div>
 </header>
 
+<!-- MAIN -->
 <main>
 
 <!-- HERO -->
@@ -59,26 +146,28 @@
     <h2>Fonctionnalités</h2>
 
     <div class="grid">
-      <div class="card tilt">
+      <div class="card">
         <h3>Upload IPFS</h3>
         <p>Déploiement instantané de vos fichiers.</p>
       </div>
 
-      <div class="card tilt">
+      <div class="card">
         <h3>Domaine personnalisé</h3>
         <p>Associez votre domaine à votre contenu Web3.</p>
       </div>
 
-      <div class="card tilt">
+      <div class="card">
         <h3>Versioning</h3>
         <p>Historique complet de vos déploiements.</p>
       </div>
     </div>
+
   </div>
 </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <p>© 2026 Web3 Hosting</p>
@@ -89,113 +178,8 @@
   </div>
 </footer>
 
-<!-- STYLE (EXTRA DESIGN) -->
-<style>
-
-/* LOADER */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: #020004;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.loader-glow {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #00f0ff, transparent);
-  animation: pulse 1.5s infinite;
-}
-
-.loader-text {
-  margin-top: 20px;
-  color: #00f0ff;
-  font-family: Orbitron;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.5); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.5; }
-}
-
-/* SMOOTH SCROLL */
-html {
-  scroll-behavior: smooth;
-}
-
-/* FADE */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 3D CARD */
-.tilt {
-  transform-style: preserve-3d;
-  transition: transform 0.2s ease;
-}
-
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background: #00f0ff;
-  margin: 4px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-  .hamburger {
-    display: flex;
-  }
-
-  .nav {
-    display: none;
-    width: 100%;
-  }
-
-  .nav.active {
-    display: block;
-  }
-
-  .nav ul {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-</style>
-
-<!-- SCRIPT -->
+<!-- JS (hamburger + scroll fade) -->
 <script>
-
-/* LOADER */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-  }, 800);
-});
-
-/* HAMBURGER */
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('.nav');
 
@@ -203,10 +187,10 @@ hamburger.addEventListener('click', () => {
   nav.classList.toggle('active');
 });
 
-/* SCROLL FADE */
+/* scroll fade */
 const faders = document.querySelectorAll('.fade');
 
-const observer = new IntersectionObserver(entries => {
+const appear = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
@@ -214,39 +198,7 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 
-faders.forEach(el => observer.observe(el));
-
-/* 3D HOVER */
-document.querySelectorAll('.tilt').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const rotateX = (y / rect.height - 0.5) * 10;
-    const rotateY = (x / rect.width - 0.5) * -10;
-
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateX(0) rotateY(0)';
-  });
-});
-
-/* ULTRA SMOOTH SCROLL (Apple style) */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-
-    window.scrollTo({
-      top: target.offsetTop,
-      behavior: "smooth"
-    });
-  });
-});
-
+faders.forEach(el => appear.observe(el));
 </script>
 
 </body>
