@@ -8,23 +8,26 @@
   ========================== -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- =========================
-       SEO
+       SEO (ADVANCED)
   ========================== -->
   <title>Web3 Hosting | Hébergement IPFS décentralisé</title>
-  <meta name="description" content="Plateforme Web3 professionnelle pour héberger vos sites sur IPFS avec domaine personnalisé.">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Plateforme Web3 professionnelle pour héberger vos sites sur IPFS avec domaine personnalisé. Déploiement rapide, sécurisé et sans serveur.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Web3 Hosting">
   <link rel="canonical" href="https://web3.nvo987.us/">
 
   <!-- =========================
        OPEN GRAPH
   ========================== -->
+  <meta property="og:locale" content="fr_FR">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Web3 Hosting">
   <meta property="og:description" content="Déployez vos sites en Web3 sans serveur.">
   <meta property="og:url" content="https://web3.nvo987.us/">
+  <meta property="og:site_name" content="Web3 Hosting">
   <meta property="og:image" content="https://web3.nvo987.us/assets/og-image.png">
 
   <!-- =========================
@@ -42,6 +45,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
+  <!-- preload font -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" as="style">
+
   <!-- =========================
        FONTS
   ========================== -->
@@ -52,16 +58,19 @@
   ========================== -->
   <meta name="theme-color" content="#020617">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- =========================
-       SECURITY (basic CSP)
+       SECURITY (IMPROVED CSP)
   ========================== -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https: data: blob:;
+        content="default-src 'self';
                  script-src 'self' https://cdn.jsdelivr.net;
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                  font-src https://fonts.gstatic.com;
-                 img-src 'self' https: data:;">
+                 img-src 'self' data: https:;
+                 connect-src 'self' https:;
+                 frame-ancestors 'none';">
 
   <!-- =========================
        ICONS
@@ -74,6 +83,19 @@
   ========================== -->
   <link rel="stylesheet" href="style.css">
 
+  <!-- =========================
+       STRUCTURED DATA (SEO PRO)
+  ========================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Web3 Hosting",
+    "url": "https://web3.nvo987.us",
+    "logo": "https://web3.nvo987.us/assets/logo.png"
+  }
+  </script>
+
 </head>
 
 <body>
@@ -84,7 +106,7 @@
 
     <a href="/" class="logo">Web3Hosting</a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
       <ul>
         <li><a href="/">Accueil</a></li>
         <li><a href="#features">Fonctionnalités</a></li>
