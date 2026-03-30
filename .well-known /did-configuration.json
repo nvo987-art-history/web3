@@ -1,0 +1,11 @@
+{
+  "@context": "https://identity.foundation/.well-known/did-configuration/v1",
+  "linked_dids": [
+    {
+      "issuers": ["did:web:identity.nvo987.us"],
+      "subject": "did:web:identity.nvo987.us",
+      "verificationMethod": "did:web:identity.nvo987.us#owner",
+      "expirationDate": "2027-03-29T00:00:00Z"
+    }
+  ]
+}
