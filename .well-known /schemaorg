@@ -1,0 +1,11 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "NVO987 Web3 Identity",
+  "url": "https://web3.nvo987.us",
+  "creator": {
+    "@type": "Person",
+    "name": "NVO987",
+    "identifier": "did:web:identity.nvo987.us"
+  }
+}
