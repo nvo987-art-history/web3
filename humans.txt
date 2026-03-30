@@ -1,0 +1,59 @@
+/* TEAM */
+
+Nicholas Van-Orton
+Independent Researcher
+DID: did:web:identity.nvo987.us
+Location: Distributed / Decentralized
+
+Contact:
+nvo@nvo987.us
+
+
+/* PROJECT */
+
+NVO987 Research Infrastructure
+
+A decentralized research and identity infrastructure
+connecting digital identity, knowledge representation,
+and machine-readable research systems.
+
+Core domains:
+
+https://identity.nvo987.us
+https://nvo987.us
+https://knowledge.nvo987.us
+https://lab.nvo987.us
+https://art.nvo987.us
+https://social.nvo987.us
+https://web3.nvo987.us
+
+
+/* PHILOSOPHY */
+
+This project explores:
+
+- decentralized identity (DID)
+- semantic web technologies
+- knowledge graph systems
+- machine-readable research environments
+- cultural and visual studies
+
+
+/* STANDARDS */
+
+DID (Decentralized Identifiers)
+JSON-LD
+RDF / FOAF
+RSS / Atom
+
+
+/* STATUS */
+
+This infrastructure is under continuous development.
+Some components are stable, others are experimental.
+
+
+/* NOTE */
+
+This file exists to provide a human-readable
+entry point into a machine-oriented system.
