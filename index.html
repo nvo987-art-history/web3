@@ -2,37 +2,141 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Decentralized Identity Architecture | NVO987</title>
+<!-- =========================
+BASIC
+========================= -->
 
-  <meta name="description" content="Structured overview of decentralized identifiers (DID v1.1), identity architecture, verification models, and cryptographic infrastructure.">
-  <meta name="author" content="NVO987">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decentralized Identity Architecture | NVO987</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Decentralized Identity Architecture">
-  <meta property="og:description" content="DID v1.1 architecture, identity models, and verification systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://web3.nvo987.us">
-  <meta property="og:image" content="/banner.jpg">
+<meta name="description" content="Decentralized identity infrastructure based on DID v1.1. Cryptographic identity, verification models, and Web3 architecture by NVO987.">
+<meta name="keywords" content="DID, decentralized identity, web3, identity infrastructure, cryptography, DID v1.1, NVO987">
+<meta name="author" content="NVO987">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+<link rel="canonical" href="https://web3.nvo987.us">
+
+<meta name="robots" content="index, follow">
+
+<!-- =========================
+FAVICON / ICONS
+========================= -->
+
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- =========================
+OPEN GRAPH (Facebook / LinkedIn)
+========================= -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Decentralized Identity Architecture">
+<meta property="og:description" content="A structured overview of decentralized identifiers, verification systems, and cryptographic identity infrastructure.">
+<meta property="og:url" content="https://web3.nvo987.us">
+<meta property="og:image" content="https://web3.nvo987.us/og-image.jpg">
+
+<!-- =========================
+TWITTER
+========================= -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Decentralized Identity Architecture">
+<meta name="twitter:description" content="DID v1.1 based identity infrastructure and Web3 identity systems.">
+<meta name="twitter:image" content="https://web3.nvo987.us/og-image.jpg">
+
+<!-- =========================
+THEME / MOBILE
+========================= -->
+
+<meta name="theme-color" content="#0a0f1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- =========================
+PERFORMANCE
+========================= -->
+
+<link rel="preconnect" href="https://identity.nvo987.us">
+<link rel="dns-prefetch" href="//identity.nvo987.us">
+
+<!-- =========================
+SECURITY (alap CSP – opcionális finomhangolás)
+========================= -->
+
+<meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+img-src 'self' https: data:;
+script-src 'self' 'unsafe-inline';
+style-src 'self' 'unsafe-inline';
+connect-src 'self' https://identity.nvo987.us;
+">
+
+<!-- =========================
+DID / WEB3 IDENTITY
+========================= -->
+
+<!-- DID document -->
+<link rel="alternate" type="application/did+json" href="https://identity.nvo987.us/.well-known/did.json">
+
+<!-- DID domain linkage proof -->
+<link rel="alternate" type="application/did+ld+json" href="https://identity.nvo987.us/.well-known/did-configuration.json">
+
+<!-- Canonical DID -->
+<meta name="did" content="did:web:identity.nvo987.us">
+
+<!-- Identity authority -->
+<link rel="me" href="https://identity.nvo987.us">
+
+<!-- Connected domains -->
+<link rel="me" href="https://nvo987.us">
+<link rel="me" href="https://lab.nvo987.us">
+<link rel="me" href="https://knowledge.nvo987.us">
+<link rel="me" href="https://art.nvo987.us">
+<link rel="me" href="https://social.nvo987.us">
+<link rel="me" href="https://nvo987.fr">
+
+<!-- =========================
+STRUCTURED DATA (JSON-LD + DID)
+========================= -->
+
+<script type="application/ld+json">
+{
+  "@context": [
+    "https://schema.org",
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "@type": "Person",
+  "@id": "did:web:identity.nvo987.us",
+  "name": "NVO987",
+  "identifier": "did:web:identity.nvo987.us",
+  "url": "https://identity.nvo987.us",
+  "sameAs": [
+    "https://nvo987.us",
+    "https://lab.nvo987.us",
+    "https://nvo987.fr",
+    "https://knowledge.nvo987.us",
+    "https://art.nvo987.us",
+    "https://social.nvo987.us"
+  ]
+}
+</script>
+
+<!-- =========================
+MACHINE ENDPOINTS
+========================= -->
+
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/graph.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/agents.jsonld">
+<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/vc.jsonld">
+
+<!-- =========================
+STYLESHEET
+========================= -->
+
+<link rel="stylesheet" href="style.css">
 
 </head>
-
-<body>
-
-<header class="hero">
-  <div class="hero-overlay">
-    <h1>Decentralized Identity Architecture</h1>
-    <p>
-      A structured overview of decentralized identifiers, verification models,
-      and cryptographic identity infrastructure based on DID v1.1.
-    </p>
-  </div>
-</header>
 
 <main>
 
