@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#">
+
+  <foaf:Person rdf:about="https://identity.nvo987.us/#nicholas-van-orton">
+
+    <foaf:name>Nicholas Van-Orton</foaf:name>
+    <foaf:givenName>Nicholas</foaf:givenName>
+    <foaf:familyName>Van-Orton</foaf:familyName>
+
+    <foaf:mbox rdf:resource="mailto:nvo@nvo987.us"/>
+
+    <foaf:homepage rdf:resource="https://identity.nvo987.us"/>
+    <foaf:page rdf:resource="https://nvo987.us"/>
+
+    <foaf:maker rdf:resource="https://nvo987.us"/>
+
+    <!-- DID identity -->
+    <owl:sameAs rdf:resource="did:web:identity.nvo987.us"/>
+
+    <!-- External identity links -->
+    <owl:sameAs rdf:resource="https://orcid.org/0009-0007-4628-1871"/>
+    <owl:sameAs rdf:resource="https://isni.org/isni/0000000529640885"/>
+    <owl:sameAs rdf:resource="https://www.wikidata.org/wiki/Q137675227"/>
+
+  </foaf:Person>
+
+</rdf:RDF>
