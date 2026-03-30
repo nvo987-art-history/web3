@@ -1,0 +1,15 @@
+{
+  "subject": "did:web:identity.nvo987.us",
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/did+json",
+      "href": "https://identity.nvo987.us/.well-known/did.json"
+    },
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://web3.nvo987.us"
+    }
+  ]
+}
