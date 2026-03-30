@@ -1,0 +1,21 @@
+{
+  "version": "2.0",
+  "software": {
+    "name": "nvo987-web3",
+    "version": "1.0.0"
+  },
+  "protocols": ["activitypub", "did", "web"],
+  "services": {
+    "inbound": [],
+    "outbound": []
+  },
+  "openRegistrations": false,
+  "usage": {
+    "users": {
+      "total": 1
+    }
+  },
+  "metadata": {
+    "did": "did:web:identity.nvo987.us"
+  }
+}
