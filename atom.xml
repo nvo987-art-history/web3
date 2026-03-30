@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>NVO987 Web3 Node Feed</title>
+  <subtitle>Decentralized identity and research infrastructure updates</subtitle>
+  <link href="https://web3.nvo987.us/atom.xml" rel="self"/>
+  <link href="https://web3.nvo987.us/"/>
+  <updated>2026-03-30T14:00:00Z</updated>
+  <id>did:web:identity.nvo987.us</id>
+
+  <author>
+    <name>Nicholas Van-Orton</name>
+    <uri>https://identity.nvo987.us</uri>
+  </author>
+
+  <entry>
+    <title>Web3 Node Initialization</title>
+    <link href="https://web3.nvo987.us/"/>
+    <id>tag:web3.nvo987.us,2026:init</id>
+    <updated>2026-03-30T14:00:00Z</updated>
+    <summary>
+      Initial deployment of the web3 node as part of the NVO987 decentralized research infrastructure.
+    </summary>
+  </entry>
+
+  <entry>
+    <title>Identity Integration</title>
+    <link href="https://identity.nvo987.us/"/>
+    <id>tag:identity.nvo987.us,2026:did</id>
+    <updated>2026-03-30T14:05:00Z</updated>
+    <summary>
+      Integration with the DID-based identity root (did:web:identity.nvo987.us).
+    </summary>
+  </entry>
+
+</feed>
