@@ -1,0 +1,11 @@
+{
+  "name": "NVO987 Web3 Agent",
+  "description": "Decentralized identity and Web3 architecture agent endpoint",
+  "url": "https://web3.nvo987.us",
+  "did": "did:web:identity.nvo987.us",
+  "endpoints": {
+    "identity": "https://identity.nvo987.us",
+    "graph": "https://identity.nvo987.us/machine/graph.jsonld",
+    "agents": "https://identity.nvo987.us/machine/agents.jsonld"
+  }
+}
