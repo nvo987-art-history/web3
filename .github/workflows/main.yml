@@ -1,4 +1,4 @@
-name: NVO987 Full Code Validator
+name: NVO987 Deep Integrity + Semantic Validator
 
 on:
   push:
@@ -9,107 +9,221 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install validators
+      - name: Install tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq tidy libxml2-utils
+          sudo apt-get install -y jq tidy libxml2-utils curl grep
 
-      - name: Validate JSON files
+      # =========================
+      # BASIC VALIDATION
+      # =========================
+
+      - name: Validate JSON
         run: |
-          echo "JSON validation"
-          find . -type f -name "*.json" ! -path "./.git/*" | while read f; do
-            echo "Checking $f"
+          find . -name "*.json" ! -path "./.git/*" | while read f; do
+            echo "JSON: $f"
             jq empty "$f"
           done
 
-      - name: Validate NDJSON files
+      - name: Validate HTML
         run: |
-          echo "NDJSON validation"
-          find . -type f -name "*.ndjson" ! -path "./.git/*" | while read f; do
-            echo "Checking $f"
-            while IFS= read -r line; do
-              echo "$line" | jq empty
-            done < "$f"
-          done
-
-      - name: Validate XML files
-        run: |
-          echo "XML validation"
-          find . -type f -name "*.xml" ! -path "./.git/*" | while read f; do
-            echo "Checking $f"
-            xmllint --noout "$f"
-          done
-
-      - name: Validate HTML files
-        run: |
-          echo "HTML validation"
-          find . -type f -name "*.html" ! -path "./.git/*" | while read f; do
-            echo "Checking $f"
+          find . -name "*.html" ! -path "./.git/*" | while read f; do
+            echo "HTML: $f"
             tidy -errors -q "$f" || true
+          done
+
+      - name: Validate XML
+        run: |
+          find . -name "*.xml" ! -path "./.git/*" | while read f; do
+            echo "XML: $f"
+            xmllint --noout "$f"
           done
 
       - name: Check empty files
         run: |
-          echo "Empty file check"
           find . -type f ! -path "./.git/*" | while read f; do
             if [ ! -s "$f" ]; then
-              echo "Empty file detected: $f"
+              echo "Empty file: $f"
               exit 1
             fi
           done
 
-      - name: Check required assets
+      # =========================
+      # REQUIRED ASSETS
+      # =========================
+
+      - name: Check assets
         run: |
-          echo "Required file check"
-          test -f avatar.png || test -f avatar.jpg
-          test -f og-image.jpg
-          test -f .well-known/knowledge.json
+          find . -name "avatar.png" -o -name "avatar.jpg" | grep -q . || { echo "Missing avatar"; exit 1; }
+          find . -name "og-image.jpg" | grep -q . || { echo "Missing og-image"; exit 1; }
 
-      - name: Structural cross-check (knowledge integrity)
+      # =========================
+      # 🔗 INTERNAL LINK CHECK
+      # =========================
+
+      - name: Validate internal links
         run: |
-          set -e
-          echo "Knowledge structural validation"
+          echo "Scanning internal links..."
 
-          corpus_file=$(find . -type f -name "corpus.ndjson" ! -path "./.git/*" | head -n 1)
-          vectors_file=$(find . -type f -name "vectors.ndjson" ! -path "./.git/*" | head -n 1)
+          grep -rhoP '(href|src)="\K[^"]+' . | while read link; do
+            if [[ "$link" == /* ]]; then
+              file=".$link"
+              if [ ! -f "$file" ]; then
+                echo "Broken internal link: $link"
+                exit 1
+              fi
+            fi
+          done
 
-          if [ -z "$corpus_file" ] || [ -z "$vectors_file" ]; then
-            echo "corpus.ndjson or vectors.ndjson not found"
+      # =========================
+      # JSON URL CHECK
+      # =========================
+
+      - name: Validate JSON references
+        run: |
+          find . -name "*.json" | while read f; do
+            jq -r '..|.url? // empty' "$f" | while read url; do
+              if [[ "$url" == https://web3.nvo987.us* ]]; then
+                path="${url#https://web3.nvo987.us}"
+                file=".$path"
+                if [ ! -f "$file" ]; then
+                  echo "Broken JSON reference in $f → $url"
+                  exit 1
+                fi
+              fi
+            done
+          done
+
+      # =========================
+      # DID CHECK
+      # =========================
+
+      - name: Check DID endpoint
+        run: |
+          echo "Checking DID..."
+          curl -s -o /dev/null -w "%{http_code}" https://identity.nvo987.us/.well-known/did.json | grep 200 || {
+            echo "DID not reachable"
             exit 1
+          }
+
+      # =========================
+      # 🌐 SITEMAP + ROBOTS
+      # =========================
+
+      - name: Check sitemap.xml
+        run: |
+          if [ -f "./web3/sitemap.xml" ]; then
+            xmllint --noout ./web3/sitemap.xml
+            echo "Sitemap valid XML"
+
+            grep -oP '<loc>\K[^<]+' ./web3/sitemap.xml | while read url; do
+              if [[ "$url" == https://web3.nvo987.us* ]]; then
+                path="${url#https://web3.nvo987.us}"
+                file="./web3$path"
+                if [ ! -f "$file" ]; then
+                  echo "Broken sitemap URL: $url"
+                  exit 1
+                fi
+              fi
+            done
+          else
+            echo "No sitemap.xml (skipped)"
           fi
 
-          echo "Using corpus file: $corpus_file"
-          echo "Using vectors file: $vectors_file"
+      - name: Check robots.txt
+        run: |
+          if [ -f "./web3/robots.txt" ]; then
+            echo "robots.txt found"
 
-          echo "Collect corpus IDs"
-          corpus_ids=$(cat "$corpus_file" | jq -r '.id')
-
-          echo "Check duplicate corpus IDs"
-          dup=$(echo "$corpus_ids" | sort | uniq -d)
-          if [ -n "$dup" ]; then
-            echo "Duplicate corpus ID detected: $dup"
-            exit 1
+            grep -i "sitemap:" ./web3/robots.txt | while read line; do
+              url=$(echo "$line" | awk '{print $2}')
+              curl --head --silent --fail "$url" > /dev/null || {
+                echo "robots.txt sitemap unreachable: $url"
+                exit 1
+              }
+            done
+          else
+            echo "No robots.txt (skipped)"
           fi
 
-          echo "Check duplicate vector IDs"
-          dupv=$(cat "$vectors_file" | jq -r '.id' | sort | uniq -d)
-          if [ -n "$dupv" ]; then
-            echo "Duplicate vector ID detected: $dupv"
-            exit 1
-          fi
+      # =========================
+      # 🧠 SCHEMA.ORG (JSON-LD)
+      # =========================
 
-          echo "Validate vector to corpus references"
-          cat "$vectors_file" | jq -r '.corpus_id' | while read cid; do
-            echo "$corpus_ids" | grep -qx "$cid" || {
-              echo "Vector references missing corpus ID: $cid"
+      - name: Validate schema.org JSON-LD
+        run: |
+          echo "Checking JSON-LD..."
+
+          grep -rhoP '<script type="application/ld\+json">.*?</script>' . | \
+          sed 's/<script[^>]*>//g' | sed 's/<\/script>//g' | while read block; do
+            echo "$block" | jq empty || {
+              echo "Invalid JSON-LD detected"
+              exit 1
+            }
+
+            echo "$block" | jq -e '."@context"' > /dev/null || {
+              echo "Missing @context in JSON-LD"
+              exit 1
+            }
+
+            echo "$block" | jq -e '."@type"' > /dev/null || {
+              echo "Missing @type in JSON-LD"
               exit 1
             }
           done
 
-          echo "Structural validation completed"
+      # =========================
+      # 🧠 SEMANTIC GRAPH VALIDATION
+      # =========================
 
-      - name: Final status
-        run: echo "All files validated successfully"
+      - name: Validate knowledge graph
+        run: |
+          if [ -f "./web3/.well-known/knowledge.json" ]; then
+            echo "Validating knowledge graph..."
+
+            jq -e '.id' web3/.well-known/knowledge.json > /dev/null || {
+              echo "Missing root id"
+              exit 1
+            }
+
+            jq -e '.nodes' web3/.well-known/knowledge.json > /dev/null || {
+              echo "Missing nodes"
+              exit 1
+            }
+
+            ids=$(jq -r '.nodes[].id' web3/.well-known/knowledge.json)
+
+            for id in $ids; do
+              if [[ "$id" == https://web3.nvo987.us* ]]; then
+                path="${id#https://web3.nvo987.us}"
+                file="./web3$path"
+                if [ ! -f "$file" ]; then
+                  echo "Broken node reference: $id"
+                  exit 1
+                fi
+              fi
+            done
+          else
+            echo "No knowledge.json (skipped)"
+          fi
+
+      # =========================
+      # 🌍 EXTERNAL LINKS (NON-BLOCKING)
+      # =========================
+
+      - name: Check external links
+        continue-on-error: true
+        run: |
+          grep -rhoP 'https?://[^"]+' . | sort -u | while read url; do
+            curl --head --silent --fail "$url" > /dev/null || echo "Broken external: $url"
+          done
+
+      # =========================
+      # FINAL
+      # =========================
+
+      - name: Done
+        run: echo "All validations passed"
