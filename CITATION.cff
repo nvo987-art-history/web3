@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+title: "NVO987 Web3 Infrastructure Node"
+message: "If you use this repository, please cite it using the metadata below."
+type: software
+
+authors:
+  - family-names: "Van-Orton"
+    given-names: "Nicholas"
+    orcid: "https://orcid.org/0009-0007-4628-1871"
+
+identifiers:
+  - type: other
+    value: "did:web:identity.nvo987.us"
+    description: "Decentralized Identifier (DID)"
+
+repository-code: "https://github.com/nvo987-art-history/web3"
+url: "https://web3.nvo987.us"
+
+abstract: >
+  The Web3 node of the NVO987 research infrastructure extends the decentralized identity system
+  into distributed environments such as ENS and IPFS. It provides alternative access layers,
+  decentralized hosting references, and supports the integration of blockchain-based verification
+  mechanisms within a machine-readable research ecosystem.
+
+keywords:
+  - decentralized identity
+  - DID
+  - web3
+  - ENS
+  - IPFS
+  - knowledge graph
+  - research infrastructure
+  - semantic web
+
+license: "CC-BY-4.0"
+
+version: "0.1.0"
+
+date-released: 2026-03-30
