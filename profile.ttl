@@ -1,0 +1,42 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <https://schema.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix did: <https://www.w3.org/ns/did#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://identity.nvo987.us/#nicholas-van-orton>
+    a foaf:Person, schema:Person ;
+
+    foaf:name "Nicholas Van-Orton" ;
+    foaf:givenName "Nicholas" ;
+    foaf:familyName "Van-Orton" ;
+
+    foaf:mbox <mailto:nvo@nvo987.us> ;
+    foaf:homepage <https://identity.nvo987.us> ;
+
+    schema:url <https://identity.nvo987.us> ;
+    schema:sameAs <https://nvo987.us> ;
+
+    # DID identity
+    owl:sameAs <did:web:identity.nvo987.us> ;
+
+    # External identifiers
+    owl:sameAs <https://orcid.org/0009-0007-4628-1871> ;
+    owl:sameAs <https://isni.org/isni/0000000529640885> ;
+    owl:sameAs <https://www.wikidata.org/wiki/Q137675227> ;
+
+    # Research context
+    schema:jobTitle "Independent Researcher" ;
+    schema:knowsAbout "Decentralized Identity",
+                      "Semantic Web",
+                      "Knowledge Graphs",
+                      "Digital Humanities",
+                      "Visual Culture" ;
+
+    # Organization
+    schema:affiliation <https://nvo987.fr/#organization> .
+
+<https://nvo987.fr/#organization>
+    a schema:Organization ;
+    schema:name "NVO987 – Culture Visuelle Moderne et Contemporaine" ;
+    schema:url <https://nvo987.fr> .
