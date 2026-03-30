@@ -1,0 +1,9 @@
+{
+  "links": [
+    {
+      "rel": "lrdd",
+      "type": "application/json",
+      "template": "https://web3.nvo987.us/.well-known/webfinger?resource={uri}"
+    }
+  ]
+}
