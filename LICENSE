@@ -1,21 +1,83 @@
-MIT License
+NVO987 Research Infrastructure License (NRIL) v1.0
 
-Copyright (c) 2026 Nicholas Van-Orton
+© 2026 Nicholas Van-Orton – NVO987
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Scope
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+This project is part of the NVO987 decentralized research infrastructure,
+associated with the decentralized identifier:
+
+did:web:identity.nvo987.us
+
+It includes identity-related data, research structures, machine-readable metadata,
+and infrastructure components.
+
+---
+
+2. Permitted Use
+
+You are allowed to:
+
+- Access, read, and study the materials
+- Use the code and structure for research and educational purposes
+- Reference and cite the project in academic or technical work
+
+---
+
+3. Attribution Requirement
+
+Any use of this work must include clear attribution to:
+
+Nicholas Van-Orton  
+NVO987 Research Infrastructure  
+did:web:identity.nvo987.us
+
+---
+
+4. Restrictions
+
+You may NOT:
+
+- Misrepresent the identity associated with this project
+- Remove or alter attribution
+- Present modified versions as the original system
+- Use the identity, metadata, or structure in a misleading or deceptive way
+
+---
+
+5. Decentralized Identity Integrity
+
+All components of this repository are linked to a verifiable decentralized identity.
+
+Any reuse must preserve the integrity of:
+
+- Identity references (DID)
+- Cryptographic associations
+- Metadata consistency
+
+---
+
+6. No Warranty
+
+This project is provided "as is", without warranty of any kind.
+The author is not liable for any damages arising from its use.
+
+---
+
+7. Jurisdiction
+
+This license operates within the framework of international open research
+and intellectual property norms.
+
+---
+
+8. Contact
+
+nvo@nvo987.us  
+contact@nvo987.fr  
+
+---
+
+End of License
