@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Decentralized Identity Architecture | NVO987</title>
+
+  <meta name="description" content="Structured overview of decentralized identifiers (DID v1.1), identity architecture, verification models, and cryptographic infrastructure.">
+  <meta name="author" content="NVO987">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Decentralized Identity Architecture">
+  <meta property="og:description" content="DID v1.1 architecture, identity models, and verification systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web3.nvo987.us">
+  <meta property="og:image" content="/banner.jpg">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-overlay">
+    <h1>Decentralized Identity Architecture</h1>
+    <p>
+      A structured overview of decentralized identifiers, verification models,
+      and cryptographic identity infrastructure based on DID v1.1.
+    </p>
+  </div>
+</header>
+
+<main>
+
+<section>
+<h2>Overview</h2>
+
+<p>
+Decentralized Identifiers (DIDs) provide a globally unique, cryptographically verifiable identity model
+that operates independently of centralized authorities. This system enables self-sovereign identity,
+where entities fully control their identifiers and associated metadata.
+</p>
+
+<p>
+The DID v1.1 specification defines the core architecture, data model, and resolution mechanisms
+required to build interoperable identity systems across decentralized environments.
+</p>
+</section>
+
+<section>
+<h2>DID Structure</h2>
+
+<p>
+A DID is a URI-based identifier that follows a standardized structure consisting of a method,
+method-specific identifier, and optional path, query, and fragment components.
+</p>
+
+<ul>
+<li>Scheme: did:</li>
+<li>Method: defines the resolution system</li>
+<li>Identifier: unique within the method namespace</li>
+</ul>
+
+<p>Example:</p>
+
+<code>did:web:nvo987.us</code>
+</section>
+
+<section>
+<h2>DID Document</h2>
+
+<p>
+Each DID resolves to a DID Document, which contains the cryptographic material
+and service endpoints necessary for authentication and interaction.
+</p>
+
+<ul>
+<li>Verification methods (public keys)</li>
+<li>Authentication mechanisms</li>
+<li>Service endpoints</li>
+<li>Key agreement definitions</li>
+</ul>
+
+<p>
+The document acts as the authoritative source of identity verification data.
+</p>
+</section>
+
+<section>
+<h2>Verification Model</h2>
+
+<p>
+DID-based identity relies on cryptographic verification instead of centralized trust.
+Public keys defined in the DID Document are used to verify signatures and prove control.
+</p>
+
+<ul>
+<li>Proof of control via private key signatures</li>
+<li>Verifiable credentials</li>
+<li>Trust derived from cryptographic integrity</li>
+</ul>
+
+<p>
+This model eliminates dependency on third-party identity providers.
+</p>
+</section>
+
+<section>
+<h2>DID Resolution</h2>
+
+<p>
+Resolution is the process of retrieving a DID Document from a DID.
+Each method defines its own resolution mechanism.
+</p>
+
+<ul>
+<li>Web-based resolution (did:web)</li>
+<li>Blockchain-based resolution</li>
+<li>Peer-to-peer resolution</li>
+</ul>
+
+<p>
+For example, did:web uses HTTPS to fetch identity metadata from a domain.
+</p>
+</section>
+
+<section>
+<h2>Key Management</h2>
+
+<p>
+Secure key management is fundamental to decentralized identity systems.
+Keys must be generated, stored, rotated, and revoked securely.
+</p>
+
+<ul>
+<li>Key rotation strategies</li>
+<li>Revocation mechanisms</li>
+<li>Multi-key support</li>
+</ul>
+
+<p>
+Loss of private keys results in loss of identity control.
+</p>
+</section>
+
+<section>
+<h2>Service Endpoints</h2>
+
+<p>
+Service endpoints define how external systems interact with the DID subject.
+They enable integration with APIs, messaging systems, and data services.
+</p>
+
+<ul>
+<li>Authentication endpoints</li>
+<li>Data exchange interfaces</li>
+<li>Communication channels</li>
+</ul>
+
+<p>
+These endpoints extend the functionality of the identity beyond verification.
+</p>
+</section>
+
+<section>
+<h2>Security Considerations</h2>
+
+<p>
+Decentralized identity introduces new security challenges that must be addressed.
+</p>
+
+<ul>
+<li>Key compromise risks</li>
+<li>Man-in-the-middle attacks</li>
+<li>Phishing and impersonation</li>
+<li>Metadata integrity</li>
+</ul>
+
+<p>
+Strong cryptographic practices and secure infrastructure are essential.
+</p>
+</section>
+
+<section>
+<h2>Interoperability</h2>
+
+<p>
+The DID ecosystem is designed to be interoperable across platforms and networks.
+Different DID methods can coexist while maintaining a unified model.
+</p>
+
+<ul>
+<li>Standardized data model</li>
+<li>Method abstraction</li>
+<li>Cross-network compatibility</li>
+</ul>
+
+<p>
+This enables seamless identity integration across decentralized systems.
+</p>
+</section>
+
+<section>
+<h2>Applications</h2>
+
+<p>
+Decentralized identifiers can be applied across multiple domains:
+</p>
+
+<ul>
+<li>Digital identity systems</li>
+<li>Academic and research identity</li>
+<li>Secure communication platforms</li>
+<li>Web3 infrastructure</li>
+</ul>
+
+<p>
+They form the foundation of next-generation identity architectures.
+</p>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 NVO987 · Decentralized Identity Framework</p>
+</footer>
+
+</body>
+  </html>
