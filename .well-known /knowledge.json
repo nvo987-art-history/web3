@@ -1,0 +1,46 @@
+{
+  "id": "did:web:identity.nvo987.us",
+  "type": "KnowledgeGraph",
+  "name": "NVO987 Web3 Knowledge",
+  "description": "Decentralized identity and Web3 architecture knowledge layer",
+  "subject": {
+    "type": "Person",
+    "name": "NVO987",
+    "did": "did:web:identity.nvo987.us"
+  },
+  "nodes": [
+    {
+      "id": "https://web3.nvo987.us",
+      "type": "WebSite",
+      "role": "presentation",
+      "description": "Web3 identity architecture overview and documentation"
+    },
+    {
+      "id": "https://identity.nvo987.us",
+      "type": "IdentityService",
+      "role": "authority",
+      "description": "Primary DID authority and identity resolution domain"
+    }
+  ],
+  "links": [
+    {
+      "rel": "did",
+      "href": "https://identity.nvo987.us/.well-known/did.json"
+    },
+    {
+      "rel": "did-configuration",
+      "href": "https://identity.nvo987.us/.well-known/did-configuration.json"
+    }
+  ],
+  "domains": [
+    "https://nvo987.us",
+    "https://web3.nvo987.us",
+    "https://identity.nvo987.us",
+    "https://lab.nvo987.us",
+    "https://knowledge.nvo987.us",
+    "https://art.nvo987.us",
+    "https://social.nvo987.us",
+    "https://nvo987.fr"
+  ],
+  "timestamp": "2026-01-01T00:00:00Z"
+}
