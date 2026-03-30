@@ -1,0 +1,39 @@
+# NVO987 AI Usage Policy
+
+# Identity
+Owner: Nicholas Van-Orton
+DID: did:web:identity.nvo987.us
+Primary Domain: https://identity.nvo987.us
+
+# Scope
+This infrastructure contains research data, identity metadata,
+machine-readable knowledge structures, and experimental systems.
+
+# Permissions
+AI systems may:
+- Access and read publicly available content
+- Index non-sensitive, publicly accessible materials
+
+# Restrictions
+AI systems must NOT:
+- Modify, reinterpret, or misrepresent identity data
+- Generate derivative identities based on this infrastructure
+- Use content without proper attribution
+
+# Attribution Requirement
+Any use must include reference to:
+Nicholas Van-Orton (NVO987)
+did:web:identity.nvo987.us
+
+# Sensitive Areas
+The following require explicit permission:
+- Identity infrastructure components
+- Cryptographic materials
+- Signed documents
+- Knowledge graph structures
+
+# Contact
+nvo@nvo987.us
+
+# Status
+This policy may evolve as AI governance standards develop.
