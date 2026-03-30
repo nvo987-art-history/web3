@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+
+<channel>
+
+<title>NVO987 Identity Feed</title>
+<link>https://identity.nvo987.us/</link>
+<description>
+Decentralized identity, research updates, and machine-readable infrastructure of NVO987.
+</description>
+<language>en</language>
+<lastBuildDate>Mon, 30 Mar 2026 12:00:00 GMT</lastBuildDate>
+
+<item>
+<title>Identity Node Initialized</title>
+<link>https://identity.nvo987.us/</link>
+<description>
+The decentralized identity node (did:web:identity.nvo987.us) has been deployed and is publicly accessible.
+</description>
+<pubDate>Mon, 30 Mar 2026 12:00:00 GMT</pubDate>
+<guid>https://identity.nvo987.us/#init</guid>
+</item>
+
+<item>
+<title>DID Document Published</title>
+<link>https://identity.nvo987.us/.well-known/did.json</link>
+<description>
+The DID document defining the cryptographic identity and service endpoints is now available.
+</description>
+<pubDate>Mon, 30 Mar 2026 12:05:00 GMT</pubDate>
+<guid>https://identity.nvo987.us/#did</guid>
+</item>
+
+<item>
+<title>Knowledge Graph Infrastructure Connected</title>
+<link>https://identity.nvo987.us/machine/graph.jsonld</link>
+<description>
+Machine-readable knowledge graph endpoints are integrated into the identity infrastructure.
+</description>
+<pubDate>Mon, 30 Mar 2026 12:10:00 GMT</pubDate>
+<guid>https://identity.nvo987.us/#graph</guid>
+</item>
+
+</channel>
+
+</rss>
