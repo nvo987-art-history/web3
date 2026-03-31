@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://identity.nvo987.us/sitemap.xml
+Sitemap: https://web3.nvo987.us/sitemap.xml 
