@@ -1,372 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-<!-- =========================
-BASIC
-========================= -->
+  <!-- =========================
+       BASIC
+  ========================== -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decentralized Identity Architecture | NVO987 | Nicholas Van-Orton</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Decentralized identity infrastructure based on DID v1.1. Cryptographic identity, verification models, and Web3 architecture by NVO987.">
-<meta name="keywords" content="DID, decentralized identity, web3, identity infrastructure, cryptography, DID v1.1, NVO987">
-<meta name="author" content="NVO987">
+  <title>Decentralized Identity Architecture | NVO987</title>
 
-<link rel="canonical" href="https://web3.nvo987.us">
-<link rel="alternate" type="application/xml" title="Sitemap" href="https://web3.nvo987.us/sitemap.xml">
+  <meta name="description" content="Decentralized identity infrastructure based on DID v1.1. Cryptographic identity, verification models, and Web3 architecture by NVO987.">
 
-<meta name="robots" content="index, follow">
+  <meta name="keywords" content="DID, decentralized identity, web3, identity infrastructure, cryptography, DID v1.1, NVO987">
 
-<!-- =========================
-FAVICON / ICONS
-========================= -->
+  <meta name="author" content="NVO987">
 
-<link rel="icon" href="/favicon.ico">
+  <meta name="theme-color" content="#050505">
 
-<!-- =========================
-OPEN GRAPH (Facebook / LinkedIn)
-========================= -->
+  <!-- =========================
+       OPEN GRAPH
+  ========================== -->
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Decentralized Identity Architecture">
-<meta property="og:description" content="A structured overview of decentralized identifiers, verification systems, and cryptographic identity infrastructure.">
-<meta property="og:url" content="https://web3.nvo987.us">
-<meta property="og:image" content="https://web3.nvo987.us/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Decentralized Identity Architecture">
+  <meta property="og:description" content="A structured overview of decentralized identifiers, verification systems, and cryptographic identity infrastructure.">
+  <meta property="og:url" content="https://web3.nvo987.us">
 
-<!-- =========================
-TWITTER
-========================= -->
+  <!-- =========================
+       TWITTER
+  ========================== -->
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Decentralized Identity Architecture">
-<meta name="twitter:description" content="DID v1.1 based identity infrastructure and Web3 identity systems.">
-<meta name="twitter:image" content="https://web3.nvo987.us/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Decentralized Identity Architecture">
+  <meta name="twitter:description" content="DID v1.1 based identity infrastructure and Web3 identity systems.">
 
-<!-- =========================
-THEME / MOBILE
-========================= -->
+  <!-- =========================
+       FONTS
+  ========================== -->
 
-<meta name="theme-color" content="#0a0f1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- =========================
-PERFORMANCE
-========================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://identity.nvo987.us">
-<link rel="dns-prefetch" href="https://identity.nvo987.us">
+  <!-- =========================
+       CSS
+  ========================== -->
 
-<!-- =========================
-DID / WEB3 IDENTITY
-========================= -->
+  <link rel="stylesheet" href="/style.css">
 
-<!-- DID document -->
-<link rel="alternate" type="application/did+json" href="https://identity.nvo987.us/.well-known/did.json">
+  <!-- =========================
+       DID LINKS
+  ========================== -->
 
-<!-- DID domain linkage proof -->
-<link rel="alternate" type="application/did+ld+json" href="https://identity.nvo987.us/.well-known/did-configuration.json">
+  <link rel="alternate" type="application/did+json" href="https://identity.nvo987.us/.well-known/did.json">
 
-<!-- Canonical DID -->
-<meta name="did" content="did:web:identity.nvo987.us">
+  <link rel="alternate" type="application/did+ld+json" href="https://identity.nvo987.us/.well-known/did-configuration.json">
 
-<!-- Identity authority -->
-<link rel="me" href="https://identity.nvo987.us">
-
-<!-- Connected domains -->
-<link rel="me" href="https://nvo987.us">
-<link rel="me" href="https://lab.nvo987.us">
-<link rel="me" href="https://knowledge.nvo987.us">
-<link rel="me" href="https://art.nvo987.us">
-<link rel="me" href="https://social.nvo987.us">
-<link rel="me" href="https://nvo987.fr">
-
-<!-- =========================
-STRUCTURED DATA (JSON-LD + DID)
-========================= -->
-
-<script type="application/ld+json">
-{
-  "@context": [
-    "https://schema.org",
-    "https://www.w3.org/ns/did/v1"
-  ],
-  "@type": "Person",
-  "@id": "did:web:identity.nvo987.us",
-  "name": "NVO987",
-  "identifier": "did:web:identity.nvo987.us",
-  "url": "https://identity.nvo987.us",
-  "sameAs": [
-    "https://nvo987.us",
-    "https://lab.nvo987.us",
-    "https://nvo987.fr",
-    "https://knowledge.nvo987.us",
-    "https://art.nvo987.us",
-    "https://social.nvo987.us"
-  ]
-}
-</script>
-
-<!-- =========================
-MACHINE ENDPOINTS
-========================= -->
-
-<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/graph.jsonld">
-<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/agents.jsonld">
-<link rel="alternate" type="application/ld+json" href="https://identity.nvo987.us/machine/vc.jsonld">
-
-<!-- =========================
-STYLESHEET
-========================= -->
-
-<link rel="stylesheet" href="/style.css">
+  <meta name="did" content="did:web:identity.nvo987.us">
 
 </head>
+
 <body>
-<header class="hero">
-  <div class="hero-overlay">
-    <h1>Decentralized Identity Architecture</h1>
-    <p>
-      DID v1.1 based identity infrastructure, cryptographic verification
-      and decentralized identity systems.
-    </p>
-  </div>
-</header> 
 
-<main>
+  <!-- =========================
+       NAVBAR
+  ========================== -->
 
-<section>
-<h2>Overview</h2>
+  <header class="navbar">
 
-<p>
-Decentralized Identifiers (DIDs) provide a globally unique, cryptographically verifiable identity model
-that operates independently of centralized authorities. This system enables self-sovereign identity,
-where entities fully control their identifiers and associated metadata.
-</p>
+    <div class="logo">
+      NVO987
+    </div>
 
-<p>
-The DID v1.1 specification defines the core architecture, data model, and resolution mechanisms
-required to build interoperable identity systems across decentralized environments.
-</p>
-</section>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#structure">DID</a>
+      <a href="#verification">Verification</a>
+      <a href="#applications">Applications</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-<section>
-<h2>DID Structure</h2>
+  </header>
 
-<p>
-A DID is a URI-based identifier that follows a standardized structure consisting of a method,
-method-specific identifier, and optional path, query, and fragment components.
-</p>
+  <!-- =========================
+       HERO
+  ========================== -->
 
-<ul>
-<li>Scheme: did:</li>
-<li>Method: defines the resolution system</li>
-<li>Identifier: unique within the method namespace</li>
-</ul>
+  <section class="hero">
 
-<p>Example:</p>
+    <div class="hero-content reveal">
 
-<code>did:web:identity.nvo987.us</code>
-</section>
+      <span class="hero-label">
+        Web3 Identity Infrastructure
+      </span>
 
-<section>
-<h2>DID Document</h2>
+      <h1>
+        Decentralized Identity Architecture
+      </h1>
 
-<p>
-Each DID resolves to a DID Document, which contains the cryptographic material
-and service endpoints necessary for authentication and interaction.
-</p>
+      <p>
+        DID v1.1 based decentralized identity infrastructure focused on
+        cryptographic verification, interoperability, decentralized trust,
+        and persistent digital identity systems.
+      </p>
 
-<ul>
-<li>Verification methods (public keys)</li>
-<li>Authentication mechanisms</li>
-<li>Service endpoints</li>
-<li>Key agreement definitions</li>
-</ul>
+      <div class="hero-buttons">
 
-<p>
-The document acts as the authoritative source of identity verification data.
-</p>
-</section>
+        <a href="#overview" class="btn primary">
+          Explore Architecture
+        </a>
 
-<section>
-<h2>Verification Model</h2>
+        <a href="#specification" class="btn secondary">
+          DID Specification
+        </a>
 
-<p>
-DID-based identity relies on cryptographic verification instead of centralized trust.
-Public keys defined in the DID Document are used to verify signatures and prove control.
-</p>
+      </div>
 
-<ul>
-<li>Proof of control via private key signatures</li>
-<li>Verifiable credentials</li>
-<li>Trust derived from cryptographic integrity</li>
-</ul>
+    </div>
 
-<p>
-This model eliminates dependency on third-party identity providers.
-</p>
-</section>
+  </section>
 
-<section>
-<h2>DID Resolution</h2>
+  <!-- =========================
+       MAIN
+  ========================== -->
 
-<p>
-Resolution is the process of retrieving a DID Document from a DID.
-Each method defines its own resolution mechanism.
-</p>
+  <main>
 
-<ul>
-<li>Web-based resolution (did:web)</li>
-<li>Blockchain-based resolution</li>
-<li>Peer-to-peer resolution</li>
-</ul>
+    <!-- OVERVIEW -->
 
-<p>
-For example, did:web uses HTTPS to fetch identity metadata from a domain.
-</p>
-</section>
+    <section id="overview" class="glass-card reveal">
 
-<section>
-<h2>Key Management</h2>
+      <div class="card-top"></div>
 
-<p>
-Secure key management is fundamental to decentralized identity systems.
-Keys must be generated, stored, rotated, and revoked securely.
-</p>
+      <h2>
+        Overview
+      </h2>
 
-<ul>
-<li>Key rotation strategies</li>
-<li>Revocation mechanisms</li>
-<li>Multi-key support</li>
-</ul>
+      <p>
+        Decentralized Identifiers (DIDs) provide a globally unique,
+        cryptographically verifiable identity model operating independently
+        from centralized authorities. This architecture enables self-sovereign
+        identity systems where entities maintain direct control over identifiers,
+        authentication mechanisms, and associated metadata across decentralized
+        environments.
+      </p>
 
-<p>
-Loss of private keys results in loss of identity control.
-</p>
-</section>
+    </section>
 
-<section>
-<h2>Service Endpoints</h2>
+    <!-- DID STRUCTURE -->
 
-<p>
-Service endpoints define how external systems interact with the DID subject.
-They enable integration with APIs, messaging systems, and data services.
-</p>
+    <section id="structure" class="glass-card reveal">
 
-<ul>
-<li>Authentication endpoints</li>
-<li>Data exchange interfaces</li>
-<li>Communication channels</li>
-</ul>
+      <div class="card-top"></div>
 
-<p>
-These endpoints extend the functionality of the identity beyond verification.
-</p>
-</section>
+      <h2>
+        DID Structure
+      </h2>
 
-<section>
-<h2>Security Considerations</h2>
+      <p>
+        A DID is a URI-based identifier consisting of a DID method,
+        method-specific identifier, and optional resolution components.
+        The structure enables interoperable identity resolution across
+        distributed systems and decentralized infrastructures.
+      </p>
 
-<p>
-Decentralized identity introduces new security challenges that must be addressed.
-</p>
+      <div class="principles-grid">
 
-<ul>
-<li>Key compromise risks</li>
-<li>Man-in-the-middle attacks</li>
-<li>Phishing and impersonation</li>
-<li>Metadata integrity</li>
-</ul>
+        <div class="principle-item">
+          <span>01</span>
+          <h3>Scheme</h3>
+          <p>
+            The standardized DID scheme begins with the did: prefix.
+          </p>
+        </div>
 
-<p>
-Strong cryptographic practices and secure infrastructure are essential.
-</p>
-</section>
+        <div class="principle-item">
+          <span>02</span>
+          <h3>Method</h3>
+          <p>
+            Defines the resolution mechanism and infrastructure layer.
+          </p>
+        </div>
 
-<section>
-<h2>Interoperability</h2>
+        <div class="principle-item">
+          <span>03</span>
+          <h3>Identifier</h3>
+          <p>
+            Unique identity string scoped to the DID method namespace.
+          </p>
+        </div>
 
-<p>
-The DID ecosystem is designed to be interoperable across platforms and networks.
-Different DID methods can coexist while maintaining a unified model.
-</p>
+      </div>
 
-<ul>
-<li>Standardized data model</li>
-<li>Method abstraction</li>
-<li>Cross-network compatibility</li>
-</ul>
+      <div class="specification-box">
 
-<p>
-This enables seamless identity integration across decentralized systems.
-</p>
-</section>
+        <div class="spec-block">
 
-<section>
-<h2>Applications</h2>
+          <span class="spec-label">
+            Example DID
+          </span>
 
-<p>
-Decentralized identifiers can be applied across multiple domains:
-</p>
+          <code class="hash-value">
+            did:web:identity.nvo987.us
+          </code>
 
-<ul>
-<li>Digital identity systems</li>
-<li>Academic and research identity</li>
-<li>Secure communication platforms</li>
-<li>Web3 infrastructure</li>
-</ul>
+        </div>
 
-<p>
-They form the foundation of next-generation identity architectures.
-</p>
-</section>
+      </div>
 
-<section>
-<h2>Specification and Source</h2>
+    </section>
 
-<p>
-This page provides a structured interpretation and architectural overview of the 
-Decentralized Identifiers (DIDs) v1.1 specification.
-</p>
+    <!-- DID DOCUMENT -->
 
-<p>
-The original standard is developed and maintained by the 
-World Wide Web Consortium (W3C) and defines the core data model, 
-resolution mechanisms, and interoperability principles for decentralized identity systems.
-</p>
+    <section class="glass-card reveal">
 
-<p>
-For the complete and authoritative specification, refer to the official publication:
-</p>
+      <div class="card-top"></div>
 
-<p>
-<a href="https://www.w3.org/TR/did-1.1/" target="_blank">
-W3C – Decentralized Identifiers (DIDs) v1.1 Specification
-</a>
-</p>
+      <h2>
+        DID Document
+      </h2>
 
-<p>
-This implementation-oriented summary is part of the NVO987 decentralized identity infrastructure, 
-providing a simplified and accessible entry point to the underlying standards while maintaining 
-alignment with the original specification.
-</p>
+      <p>
+        Every DID resolves to a DID Document containing verification methods,
+        authentication keys, service endpoints, and cryptographic metadata
+        necessary for identity validation and secure interaction.
+      </p>
 
-</section>
+      <div class="principles-grid">
 
-</main>
+        <div class="principle-item">
+          <span>01</span>
+          <h3>Verification Methods</h3>
+          <p>
+            Public keys used for cryptographic signature validation.
+          </p>
+        </div>
 
-<footer>
-  <p>
-    © 2026 NVO987 · Decentralized Identity Framework · 
-    <a href="https://identity.nvo987.us" target="_blank" rel="noopener">
-      did:web:identity.nvo987.us
-    </a>
-  </p>
-</footer>
+        <div class="principle-item">
+          <span>02</span>
+          <h3>Authentication</h3>
+          <p>
+            Identity proof mechanisms based on asymmetric cryptography.
+          </p>
+        </div>
+
+        <div class="principle-item">
+          <span>03</span>
+          <h3>Service Endpoints</h3>
+          <p>
+            External communication and interaction interfaces.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- VERIFICATION -->
+
+    <section id="verification" class="glass-card reveal">
+
+      <div class="card-top"></div>
+
+      <h2>
+        Verification Model
+      </h2>
+
+      <p>
+        DID-based verification systems replace centralized trust providers
+        with cryptographic integrity models. Public keys stored within DID
+        Documents verify signatures, establish authenticity, and prove
+        identifier ownership without relying on third-party intermediaries.
+      </p>
+
+    </section>
+
+    <!-- RESOLUTION -->
+
+    <section class="glass-card reveal">
+
+      <div class="card-top"></div>
+
+      <h2>
+        DID Resolution
+      </h2>
+
+      <p>
+        Resolution is the process of retrieving a DID Document from a DID.
+        Each DID method defines its own resolution architecture while
+        maintaining interoperability across decentralized ecosystems.
+      </p>
+
+      <div class="principles-grid">
+
+        <div class="principle-item">
+          <span>01</span>
+          <h3>did:web</h3>
+          <p>
+            HTTPS-based identity document resolution using domain infrastructure.
+          </p>
+        </div>
+
+        <div class="principle-item">
+          <span>02</span>
+          <h3>Blockchain Methods</h3>
+          <p>
+            Resolution through distributed ledger infrastructure.
+          </p>
+        </div>
+
+        <div class="principle-item">
+          <span>03</span>
+          <h3>Peer Methods</h3>
+          <p>
+            Direct peer-to-peer identity resolution models.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SECURITY -->
+
+    <section class="glass-card reveal">
+
+      <div class="card-top"></div>
+
+      <h2>
+        Security Considerations
+      </h2>
+
+      <p>
+        Decentralized identity systems require strong cryptographic security,
+        secure infrastructure management, key rotation strategies, and
+        integrity protection against impersonation, phishing, and key compromise.
+      </p>
+
+    </section>
+
+    <!-- APPLICATIONS -->
+
+    <section id="applications" class="glass-card reveal">
+
+      <div class="card-top"></div>
+
+      <h2>
+        Applications
+      </h2>
+
+      <p>
+        Decentralized identity systems can be deployed across multiple
+        digital infrastructures including Web3 identity frameworks,
+        academic verification systems, secure communication platforms,
+        and decentralized authentication architectures.
+      </p>
+
+      <div class="principles-grid">
+
+        <div class="principle-item">
+          <span>01</span>
+          <h3>Digital Identity</h3>
+          <p>
+            Persistent decentralized identity frameworks for users and systems.
+          </p>
+        </div>
+
+        <div class="principle-item">
+          <span>02</span>
+          <h3>Research Systems</h3>
+          <p>
+            Academic verification and decentralized reputation infrastructure.
+          </p>
+        </div>
+
+        <div class="principle-item">
+          <span>03</span>
+          <h3>Web3 Infrastructure</h3>
+          <p>
+            Authentication and trust layers for decentralized environments.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- SPECIFICATION -->
+
+    <section id="specification" class="glass-card reveal">
+
+      <div class="card-top"></div>
+
+      <h2>
+        Specification and Source
+      </h2>
+
+      <p>
+        This page provides a structured overview of the Decentralized
+        Identifiers (DIDs) v1.1 specification and its architectural model
+        for interoperable decentralized identity systems.
+      </p>
+
+      <div class="specification-box">
+
+        <div class="spec-block">
+
+          <span class="spec-label">
+            Official Specification
+          </span>
+
+          <a
+            href="https://www.w3.org/TR/did-1.1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="spec-link">
+
+            W3C — DID v1.1 Specification
+
+          </a>
+
+        </div>
+
+        <div class="spec-block">
+
+          <span class="spec-label">
+            Canonical DID
+          </span>
+
+          <code class="hash-value">
+            did:web:identity.nvo987.us
+          </code>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer id="contact">
+
+    <div class="footer-inner">
+
+      <h3>
+        NVO987
+      </h3>
+
+      <a
+        href="https://identity.nvo987.us"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-email">
+
+        did:web:identity.nvo987.us
+
+      </a>
+
+      <div class="footer-links">
+
+        <a href="https://nvo987.us" target="_blank">
+          nvo987.us
+        </a>
+
+        <a href="https://knowledge.nvo987.us" target="_blank">
+          knowledge.nvo987.us
+        </a>
+
+        <a href="https://lab.nvo987.us" target="_blank">
+          lab.nvo987.us
+        </a>
+
+      </div>
+
+      <p class="footer-meta">
+        © 2026 NVO987 · Decentralized Identity Framework · DID v1.1 Architecture
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================
+       REVEAL SCRIPT
+  ========================== -->
+
+  <script>
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+        }
+
+      });
+
+    }, {
+      threshold: 0.15
+    });
+
+    reveals.forEach(el => observer.observe(el));
+
+  </script>
 
 </body>
   </html>
