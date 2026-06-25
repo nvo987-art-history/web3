@@ -43,7 +43,7 @@ The NVO987 system is composed of multiple interconnected domains:
 
 ---
 
-## 🧠 Purpose of this Repository
+## Purpose of this Repository
 
 This repository hosts the **web3-facing layer** of the infrastructure.
 
